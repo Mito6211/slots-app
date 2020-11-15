@@ -1,0 +1,46 @@
+.spinMainContext {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.dataBox {
+    width: 40%;
+    min-width: 200px;
+    max-width: 400px;
+    height: 200px;
+    border: 10px solid gray;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.dataBox span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+}
+
+.otherData {
+    display: flex;
+    flex-direction: column;
+}
+
+.spinBtn {
+    font-size: 30px;
+    /* flex: 1; */
+    height: 75px;
+}
+
+.outcome {
+    font-size: 22px;
+    border: 5px solid gray;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 75px;
+}

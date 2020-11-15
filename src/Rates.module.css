@@ -1,0 +1,88 @@
+.ratesMainContext {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    min-width: 40%;
+}
+
+.dataBox {
+    width: 100%;
+    height: 50px;
+    border: 5px solid gray;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.dataBox .tierName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+}
+
+.spinBtn {
+    font-size: 30px;
+    height: 75px;
+    width: 100%;
+}
+
+.rightData {
+    border: 3px solid gray;
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.rightContainer {
+    width: 100%;
+    margin-left: 30px;
+}
+
+.rightInputs {
+    margin-top:15px;
+    display: flex;
+}
+
+.rightInputs input {
+    width: 75%;
+    height: 44px;
+    font-size: 22px;
+    padding-left: 11px;
+    padding-right: 11px;
+    flex: 8;
+}
+
+.rightInputs button {
+    height: 44px;
+    font-size: 22px;
+    width: 15%;
+    flex: 2;
+}
+
+.items {
+    font-size: 22px;
+}
+
+.rightInputs form {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.percentage {
+    flex: 0.4;
+    justify-content: right;
+    align-items: flex-end;
+    text-align: right;
+    padding: 10px;
+    width: 10%;
+}
+
+.mainContent {
+    height: 60vh;
+}
