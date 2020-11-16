@@ -3,14 +3,7 @@ import React, { useState } from 'react'
 import useForm from './hooks/useForm'
 import styles from "./Rates.module.css"
 
-const RatesTiers = () => {
-
-    const [tiers, setTiers] = useState(
-        [
-            { tier: "TierName1", percent: 26 },
-            { tier: "TierName2", percent: 594 },
-            { tier: "Another Example Tier", percent: 1 }
-        ]);
+const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier } }) => {
 
     const [tierData, setTierData, handleTierChange] = useForm('');
     const [percentageData, setPercentageData, handlePercentageChange] = useForm('');
@@ -21,15 +14,17 @@ const RatesTiers = () => {
         if (tierData.length > 0 && percentageData.length > 0) {
             setTiers(prevTiers => ([
                 ...prevTiers,
-                { tier: tierData, percent: percentageData.replace('%', '') }
+                {
+                    tier: tierData,
+                    percent: percentageData.replace('%', ''),
+                    items: []
+                }
             ]));
         }
         setTierData('');
         setPercentageData('');
         e.preventDefault();
     }
-
-
 
     return (
         <div className={styles.ratesMainContext}>
@@ -38,7 +33,7 @@ const RatesTiers = () => {
 
                 {tiers.map(tierData => (
                     <div className={styles.dataBox}>
-                        <span className={styles.tierName}>
+                        <span className={styles.tierName} onClick={selectTier}>
                             {tierData.tier}
                             <span className={styles.percentage}>{tierData.percent}%</span>
                         </span>

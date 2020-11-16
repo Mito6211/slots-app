@@ -1,9 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Rates.module.css';
 import useForm from './hooks/useForm';
 
-const RatesData = () => {
-    const [items, setItems] = useState(["Item 1", "Item2", "Item-3"]);
+// [
+//     {
+//         tier: "TierName1",
+//         percent: 26,
+//         items: [
+//             "Tier1Item1",
+//             "Another Item",
+//             "qqwertysdf",
+//             "zxcvbe"
+//         ]
+//     }, {
+//         tier: "TierName2",
+//         percent: 594,
+//         items: [
+//             "abcdefg",
+//             "TIER #2 IS SELECTED",
+//             "zxcv"
+//         ]
+//     }, {
+//         tier: "Another Example Tier",
+//         percent: 1,
+//         items: [
+//             "Tier3",
+//             "You have selected the 3rd tier",
+//             "3rd tier item",
+//             "example",
+//             "demo"
+//         ]
+//     }]
+
+const RatesData = ({ data: { tiers, selectedTier } }) => {
+    const [items, setItems] = useState(tiers[0].items);
     const [itemData, setItemData, handleItemChange] = useForm('');
 
     const itemAdd = (e) => {
@@ -16,6 +46,10 @@ const RatesData = () => {
         setItemData('');
         e.preventDefault();
     }
+
+    useEffect(() => {
+        setItems(tiers.find(element => element.tier === selectedTier).items)
+    }, [tiers, selectedTier])
 
     return (
         <div className={styles.rightContainer}>
