@@ -33,8 +33,8 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier } }) => 
 
                 {tiers.map(tierData => (
                     <div className={styles.dataBox}>
-                        <span className={styles.tierName} onClick={selectTier}>
-                            {tierData.tier}
+                        <span className={styles.tierName}>
+                            <span className={styles.tierText} onClick={selectTier}>{tierData.tier}</span>
                             <span className={styles.percentage}>{tierData.percent}%</span>
                         </span>
                     </div>
