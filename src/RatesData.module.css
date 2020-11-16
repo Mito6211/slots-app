@@ -1,0 +1,48 @@
+.rightContainer {
+    width: 100%;
+    margin-left: 30px;
+}
+
+.mainContent, .rightData {
+    flex: 1;
+}
+
+.rightData {
+    border: 3px solid gray;
+    height: 60vh;
+    overflow-y: scroll;
+    font-size: 22px;
+}
+
+
+.rightInputs {
+    margin-top:15px;
+    display: flex;
+}
+
+.rightInputs input {
+    width: 75%;
+    height: 44px;
+    font-size: 22px;
+    padding: 0px 11px;
+    flex: 8;
+    box-sizing: border-box;
+}
+
+.rightInputs button {
+    height: 44px;
+    font-size: 22px;
+    width: 25%;
+    flex: 2;
+}
+
+.rightInputs form {
+    width: 100%;
+}
+
+@media screen and (max-width: 697px) {
+    .rightContainer {
+        margin-top: 100px;
+        margin-left: 0px;
+    }
+}

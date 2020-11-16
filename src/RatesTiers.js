@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import useForm from './hooks/useForm'
-import styles from "./Rates.module.css"
+import styles from "./RatesTiers.module.css"
 
 const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier } }) => {
 

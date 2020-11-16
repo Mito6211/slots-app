@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Rates.module.css';
+import styles from './RatesData.module.css';
 import useForm from './hooks/useForm';
 
 // [
