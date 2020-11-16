@@ -1,9 +1,18 @@
 .ratesMainContext {
-    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: column;
     min-width: 40%;
+}
+
+.mainContent, .rightData {
+    flex: 1;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .dataBox {
@@ -16,16 +25,14 @@
 
 .dataBox .tierName {
     display: flex;
-    justify-content: center;
     align-items: center;
     text-align: center;
     height: 50px;
 }
 
-.spinBtn {
-    font-size: 30px;
-    height: 75px;
-    width: 100%;
+.tierName {
+    justify-content: space-between;
+    padding-left: 10px;
 }
 
 .rightData {
@@ -48,15 +55,15 @@
     width: 75%;
     height: 44px;
     font-size: 22px;
-    padding-left: 11px;
-    padding-right: 11px;
+    padding: 0px 11px;
     flex: 8;
+    box-sizing: border-box;
 }
 
 .rightInputs button {
     height: 44px;
     font-size: 22px;
-    width: 15%;
+    width: 25%;
     flex: 2;
 }
 
@@ -68,21 +75,48 @@
     width: 100%;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
 
 .percentage {
-    flex: 0.4;
-    justify-content: right;
-    align-items: flex-end;
-    text-align: right;
     padding: 10px;
-    width: 10%;
 }
 
 .mainContent {
     height: 60vh;
+}
+
+.tierForm {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tierItem {
+    flex: 2;
+    font-size: 22px;
+    padding: 0px 11px;
+    box-sizing: border-box;
+    height: 44px;
+}
+
+.tierPercentage, .tierAdd {
+    flex: 1;
+    height: 44px;
+    font-size: 22px;
+    box-sizing: border-box;
+}
+
+.tierPercentage {
+    max-width: 100px;
+}
+
+
+
+@media screen and (max-width: 697px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .rightContainer {
+        margin-top: 100px;
+        margin-left: 0px;
+    }
 }

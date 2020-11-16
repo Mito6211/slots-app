@@ -3,17 +3,31 @@ import React, { useState } from 'react'
 import useForm from './hooks/useForm'
 import styles from "./Rates.module.css"
 
+import RatesData from "./RatesData"
+
 function Rates() {
 
-    const [items, setItems] = useState(["Item 1", "Item2", "Item-3"]);
-    const [itemData, setItemData, handleChange] = useForm();
+    const [tiers, setTiers] = useState(
+        [
+            { tier: "TierName1", percent: 26 },
+            { tier: "TierName2", percent: 594 },
+            { tier: "Another Example Tier", percent: 1 }
+        ]);
 
-    const testingAdd = (e) => {
-        setItems(prevItems => ([
-            ...prevItems,
-            itemData
-        ]));
-        setItemData('')
+    const [tierData, setTierData, handleTierChange] = useForm('');
+    const [percentageData, setPercentageData, handlePercentageChange] = useForm('');
+
+
+
+    const handleTierSubmit = (e) => {
+        if (tierData.length > 0 && percentageData.length > 0) {
+            setTiers(prevTiers => ([
+                ...prevTiers,
+                { tier: tierData, percent: percentageData.replace('%', '') }
+            ]));
+        }
+        setTierData('');
+        setPercentageData('');
         e.preventDefault();
     }
 
@@ -24,47 +38,38 @@ function Rates() {
             <div className={styles.ratesMainContext}>
                 <div className={styles.mainContent}>
 
-                    <div className={styles.dataBox}>
-                        <span className={styles.tierName}>
-                            TIER_NAME 1<span className={styles.percentage}>x%</span>
-                        </span>
-                    </div>
+                    {tiers.map(tierData => (
+                        <div className={styles.dataBox}>
+                            <span className={styles.tierName}>
+                                {tierData.tier}
+                                <span className={styles.percentage}>{tierData.percent}%</span>
+                            </span>
+                        </div>
+                    ))}
 
-                    <div className={styles.dataBox}>
-                        <span className={styles.tierName}>
-                            TIER_NAME 2<span className={styles.percentage}>x%</span>
-                        </span>
-                    </div>
-
-                    <div className={styles.dataBox}>
-                        <span className={styles.tierName}>
-                            TIER_NAME 3<span className={styles.percentage}>x%</span>
-                        </span>
-                    </div>
-
-                    <div className={styles.dataBox}>
-                        <span className={styles.tierName}>
-                            TIER_NAME 4<span className={styles.percentage}>x%</span>
-                        </span>
-                    </div>
-
-                    <button className={styles.spinBtn}>ADD</button>
-                </div>
-
-            </div>
-            <div className={styles.rightContainer}>
-                <div className={styles.rightData}>
-                    <ul className={styles.items}>
-                        {items.map(item => <li key={Math.random()*10000}>{item}</li>)}
-                    </ul>
-                </div>
-                <div className={styles.rightInputs}>
-                    <form onSubmit={testingAdd}>
-                        <input type="text" value={itemData} name="item" onChange={handleChange} />
-                        <button>ADD</button>
+                    <form className={styles.tierForm} onSubmit={handleTierSubmit}>
+                        <input
+                            type="text"
+                            placeholder="tier"
+                            value={tierData}
+                            className={styles.tierItem}
+                            onChange={handleTierChange}
+                        />
+                        <input
+                            type="text"
+                            placeholder="%"
+                            value={percentageData}
+                            className={styles.tierPercentage}
+                            onChange={handlePercentageChange}
+                        />
+                        <button className={styles.tierAdd}>ADD</button>
                     </form>
+
                 </div>
+
             </div>
+
+            <RatesData />
 
         </div>
     )
