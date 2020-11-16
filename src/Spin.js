@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from "./Spin.module.css"
 
-function Spin() {
+const Spin = () => {
     return (
         <>
             <div className={styles.spinMainContext}>

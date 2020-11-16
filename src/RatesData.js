@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Rates.module.css';
 import useForm from './hooks/useForm';
 
-function RatesData() {
+const RatesData = () => {
     const [items, setItems] = useState(["Item 1", "Item2", "Item-3"]);
     const [itemData, setItemData, handleItemChange] = useForm('');
 
