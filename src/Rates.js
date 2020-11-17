@@ -41,8 +41,7 @@ const Rates = () => {
         const [selectedTier, setSelectedTier] = useState(tiers[0].tier);
 
         const selectTier = (e) => {
-            setSelectedTier(e.target.childNodes[0].textContent)
-            console.log(e.target.childNodes)
+            setSelectedTier(e.target.childNodes[0].textContent);
         }
 
 
