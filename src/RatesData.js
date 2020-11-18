@@ -18,8 +18,8 @@ const RatesData = ({ data: { tiers, selectedTier } }) => {
     }
 
     useEffect(() => {
-        const tierItem = tiers.find(element => element.tier === selectedTier)
-        if (tierItem.items !== undefined) {
+        const tierItem = tiers[selectedTier];
+        if (tierItem !== undefined) {
             setItems(tierItem.items)
         }
     }, [tiers, selectedTier])

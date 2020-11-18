@@ -38,10 +38,11 @@ const Rates = () => {
         ]);
 
 
-        const [selectedTier, setSelectedTier] = useState(tiers[0].tier);
+        const [selectedTier, setSelectedTier] = useState(0);
 
         const selectTier = (e) => {
-            setSelectedTier(e.target.childNodes[0].textContent);
+            console.log(e.target.attributes.id.value)
+            setSelectedTier(e.target.attributes.id.value);
         }
 
         const removeTier = (i) => {

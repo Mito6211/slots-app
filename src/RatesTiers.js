@@ -37,7 +37,8 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
                             <span
                                 className={styles.tierText}
                                 onClick={selectTier}
-                                style={{ fontWeight: tierData.tier === selectedTier ? "bolder" : "normal" }}
+                                style={{ fontWeight: index === parseInt(selectedTier) ? "bolder" : "normal" }}
+                                id={index}
                             >
                                 {tierData.tier}
                             </span>
