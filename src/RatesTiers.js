@@ -3,7 +3,7 @@ import React from 'react'
 import useForm from './hooks/useForm'
 import styles from "./RatesTiers.module.css"
 
-const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier } }) => {
+const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier } }) => {
 
     const [tierData, setTierData, handleTierChange] = useForm('');
     const [percentageData, setPercentageData, handlePercentageChange] = useForm('');
@@ -31,11 +31,21 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier } }) => 
 
             <div className={styles.mainContent}>
 
-                {tiers.map(tierData => (
-                    <div key={Math.round(Math.random() * 10000)} className={styles.dataBox}>
+                {tiers.map((tierData, index) => (
+                    <div key={index} className={styles.dataBox}>
                         <span className={styles.tierName}>
-                            <span className={styles.tierText} onClick={selectTier} style={{fontWeight: tierData.tier === selectedTier ? "bolder" : "normal"}}>{tierData.tier}</span>
-                            <span className={styles.percentage}>{tierData.percent}%</span>
+                            <span
+                                className={styles.tierText}
+                                onClick={selectTier}
+                                style={{ fontWeight: tierData.tier === selectedTier ? "bolder" : "normal" }}
+                            >
+                                {tierData.tier}
+                            </span>
+                            <span className={styles.percentage}>
+                                {tierData.percent}%
+                                <span className={styles.removeIcon} onClick={() => removeTier(index)}>(X)</span>
+                            </span>
+
                         </span>
                     </div>
                 ))}

@@ -13,26 +13,26 @@ const Rates = () => {
                 items: [
                     "Tier1Item1",
                     "Another Item",
-                    "qqwertysdf",
-                    "zxcvbe"
+                    "lorem ispum",
+                    "example"
                 ]
             }, {
                 tier: "TierName2",
                 percent: 594,
                 items: [
                     "abcdefg",
-                    "TIER #2 IS SELECTED",
-                    "zxcv"
+                    "tier2 item",
+                    "something"
                 ]
             }, {
                 tier: "Another Example Tier",
                 percent: 1,
                 items: [
                     "Tier3",
-                    "You have selected the 3rd tier",
-                    "3rd tier item",
-                    "example",
-                    "demo"
+                    "something else",
+                    "another example",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+                    "ABC"
                 ]
             }
         ]);
@@ -44,10 +44,14 @@ const Rates = () => {
             setSelectedTier(e.target.childNodes[0].textContent);
         }
 
+        const removeTier = (i) => {
+            setTiers(tiers.filter(tier => tier !== tiers[i]))
+        }
+
 
     return (
         <div className={styles.container}>
-            <RatesTiers data={{tiers, setTiers, selectedTier, selectTier}} />
+            <RatesTiers data={{tiers, setTiers, selectedTier, selectTier, removeTier}} />
             <RatesData data={{tiers, selectedTier}} />
         </div>
     )

@@ -51,3 +51,8 @@
 .tierPercentage {
     max-width: 100px;
 }
+
+.removeIcon {
+    color: red;
+    cursor: pointer;
+}

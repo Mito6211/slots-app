@@ -2,38 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './RatesData.module.css';
 import useForm from './hooks/useForm';
 
-// [
-//     {
-//         tier: "TierName1",
-//         percent: 26,
-//         items: [
-//             "Tier1Item1",
-//             "Another Item",
-//             "qqwertysdf",
-//             "zxcvbe"
-//         ]
-//     }, {
-//         tier: "TierName2",
-//         percent: 594,
-//         items: [
-//             "abcdefg",
-//             "TIER #2 IS SELECTED",
-//             "zxcv"
-//         ]
-//     }, {
-//         tier: "Another Example Tier",
-//         percent: 1,
-//         items: [
-//             "Tier3",
-//             "You have selected the 3rd tier",
-//             "3rd tier item",
-//             "example",
-//             "demo"
-//         ]
-//     }]
-
 const RatesData = ({ data: { tiers, selectedTier } }) => {
-    const [items, setItems] = useState(tiers[0].items);
+    const [items, setItems] = useState([]);
     const [itemData, setItemData, handleItemChange] = useForm('');
 
     const itemAdd = (e) => {
@@ -48,14 +18,17 @@ const RatesData = ({ data: { tiers, selectedTier } }) => {
     }
 
     useEffect(() => {
-        setItems(tiers.find(element => element.tier === selectedTier).items)
+        const tierItem = tiers.find(element => element.tier === selectedTier)
+        if (tierItem.items !== undefined) {
+            setItems(tierItem.items)
+        }
     }, [tiers, selectedTier])
 
     return (
         <div className={styles.rightContainer}>
             <div className={styles.rightData}>
                 <ul className={styles.items}>
-                    {items.map(item => <li key={Math.random() * 10000}>{item}</li>)}
+                    {items.map((item, index) => <li key={index}>{item}</li>)}
                 </ul>
             </div>
             <div className={styles.rightInputs}>
