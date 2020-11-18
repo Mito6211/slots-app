@@ -17,6 +17,7 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
                 {
                     tier: tierData,
                     percent: percentageData.replace('%', ''),
+                    perSelected: false,
                     items: []
                 }
             ]));
@@ -24,6 +25,27 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
         setTierData('');
         setPercentageData('');
         e.preventDefault();
+    }
+
+    const changePercentage = (index) => {
+        const updatedTiers = [...tiers]
+        updatedTiers[index] = {
+            ...updatedTiers[index],
+            perSelected: !updatedTiers[index].perSelected
+        }
+
+        setTiers(updatedTiers)
+    }
+
+    const handlePercentageUpdate = ({ value }, index) => {
+        const updatedTiers = [...tiers]
+        if (typeof updatedTiers[index].percent == "number") {
+            updatedTiers[index] = {
+                ...updatedTiers[index],
+                percent: parseInt(value)
+            }
+            setTiers(updatedTiers);
+        }
     }
 
     return (
@@ -40,10 +62,24 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
                                 style={{ fontWeight: index === parseInt(selectedTier) ? "bolder" : "normal" }}
                                 id={index}
                             >
-                                {tierData.tier}
+                                {tiers[index].tier}
                             </span>
                             <span className={styles.percentage}>
-                                {tierData.percent}%
+                                <span onClick={() => changePercentage(index)}>
+                                    {tierData.perSelected ?
+                                        <form onSubmit={(e) => {
+                                            changePercentage(index);
+                                            e.preventDefault();
+                                        }}>
+                                            <input
+                                                type="text"
+                                                value={tierData.percent}
+                                                onChange={(e) => handlePercentageUpdate(e.target, index)}
+                                                autoFocus={true}
+                                            />
+                                        </form> :
+                                        tierData.percent}%
+                                </span>
                                 <span className={styles.removeIcon} onClick={() => removeTier(index)}>(X)</span>
                             </span>
 

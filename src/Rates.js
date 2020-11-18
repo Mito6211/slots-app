@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from "./Rates.module.css";
 
 import RatesData from "./RatesData";
@@ -10,6 +10,7 @@ const Rates = () => {
             {
                 tier: "TierName1",
                 percent: 26,
+                perSelected: false,
                 items: [
                     "Tier1Item1",
                     "Another Item",
@@ -19,6 +20,7 @@ const Rates = () => {
             }, {
                 tier: "TierName2",
                 percent: 594,
+                perSelected: false,
                 items: [
                     "abcdefg",
                     "tier2 item",
@@ -27,6 +29,7 @@ const Rates = () => {
             }, {
                 tier: "Another Example Tier",
                 percent: 1,
+                perSelected: false,
                 items: [
                     "Tier3",
                     "something else",
@@ -37,23 +40,22 @@ const Rates = () => {
             }
         ]);
 
+    const [selectedTier, setSelectedTier] = useState(0);
 
-        const [selectedTier, setSelectedTier] = useState(0);
+    const selectTier = (e) => {
+        console.log(e.target.attributes.id.value)
+        setSelectedTier(e.target.attributes.id.value);
+    }
 
-        const selectTier = (e) => {
-            console.log(e.target.attributes.id.value)
-            setSelectedTier(e.target.attributes.id.value);
-        }
-
-        const removeTier = (i) => {
-            setTiers(tiers.filter(tier => tier !== tiers[i]))
-        }
+    const removeTier = (i) => {
+        setTiers(tiers.filter(tier => tier !== tiers[i]))
+    }
 
 
     return (
         <div className={styles.container}>
-            <RatesTiers data={{tiers, setTiers, selectedTier, selectTier, removeTier}} />
-            <RatesData data={{tiers, selectedTier}} />
+            <RatesTiers data={{ tiers, setTiers, selectedTier, selectTier, removeTier }} />
+            <RatesData data={{ tiers, selectedTier }} />
         </div>
     )
 }
