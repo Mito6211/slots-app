@@ -43,7 +43,6 @@ const Rates = () => {
     const [selectedTier, setSelectedTier] = useState(0);
 
     const selectTier = (e) => {
-        console.log(e.target.attributes.id.value)
         setSelectedTier(e.target.attributes.id.value);
     }
 

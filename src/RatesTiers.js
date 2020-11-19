@@ -39,12 +39,19 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
 
     const handlePercentageUpdate = ({ value }, index) => {
         const updatedTiers = [...tiers]
-        if (typeof updatedTiers[index].percent == "number") {
+        updatedTiers[index] = {
+            ...updatedTiers[index],
+            percent: parseInt(value)
+        }
+        if (!isNaN(updatedTiers[index].percent)) { 
+            setTiers(updatedTiers);
+        } else {
             updatedTiers[index] = {
                 ...updatedTiers[index],
-                percent: parseInt(value)
+                percent: 0
             }
             setTiers(updatedTiers);
+
         }
     }
 
