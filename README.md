@@ -14,7 +14,7 @@ react-test\
 react-eject\
 electron-build\
 build\
-start\
+start
 
 ### `yarn start`
 

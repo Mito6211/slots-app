@@ -54,9 +54,13 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
         setTiers(updatedTiers);
     }
 
+    const totalPercentage = tiers.reduce((total, item) => total + parseInt(item.percent), 0)
+    
     return (
         <div className={styles.ratesMainContext}>
-
+            <div style={{ color: totalPercentage === 100 ? "green" : "red", padding: "10px"}}>
+                Total: {!isNaN(totalPercentage) ? totalPercentage : 0}%
+            </div>
             <div className={styles.mainContent}>
 
                 {tiers.map((tierData, index) => (
