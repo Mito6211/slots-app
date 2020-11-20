@@ -9,7 +9,7 @@ const Rates = () => {
         [
             {
                 tier: "TierName1",
-                percent: 26,
+                percent: "26",
                 perSelected: false,
                 items: [
                     "Tier1Item1",
@@ -19,7 +19,7 @@ const Rates = () => {
                 ]
             }, {
                 tier: "TierName2",
-                percent: 594,
+                percent: "594",
                 perSelected: false,
                 items: [
                     "abcdefg",
@@ -28,7 +28,7 @@ const Rates = () => {
                 ]
             }, {
                 tier: "Another Example Tier",
-                percent: 1,
+                percent: "1",
                 perSelected: false,
                 items: [
                     "Tier3",

@@ -39,7 +39,12 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
 
     const handlePercentageUpdate = ({ value }, index) => {
         const updatedTiers = [...tiers];
-        const percentValue = isNaN(parseInt(value)) ? 0 : parseInt(value);
+        const keystroke = value[value.length - 1];
+        let percentValue = (isNaN(parseInt(value)) && keystroke !== '.') ? "" : value;
+
+        if (keystroke === '.' && parseInt(tiers[index].percent) % 1 !== 0) {
+            percentValue = value;
+        }
 
         updatedTiers[index] = {
             ...updatedTiers[index],
