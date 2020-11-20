@@ -38,21 +38,15 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
     }
 
     const handlePercentageUpdate = ({ value }, index) => {
-        const updatedTiers = [...tiers]
+        const updatedTiers = [...tiers];
+        const percentValue = isNaN(parseInt(value)) ? 0 : parseInt(value);
+
         updatedTiers[index] = {
             ...updatedTiers[index],
-            percent: parseInt(value)
+            percent: percentValue
         }
-        if (!isNaN(updatedTiers[index].percent)) { 
-            setTiers(updatedTiers);
-        } else {
-            updatedTiers[index] = {
-                ...updatedTiers[index],
-                percent: 0
-            }
-            setTiers(updatedTiers);
 
-        }
+        setTiers(updatedTiers);
     }
 
     return (
@@ -83,6 +77,7 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
                                                 value={tierData.percent}
                                                 onChange={(e) => handlePercentageUpdate(e.target, index)}
                                                 autoFocus={true}
+                                                className={styles.percentageUpdateInput}
                                             />
                                         </form> :
                                         tierData.percent}%
