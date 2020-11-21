@@ -3,7 +3,7 @@ import React from 'react'
 import useForm from './hooks/useForm'
 import styles from "./RatesTiers.module.css"
 
-const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier } }) => {
+const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage } }) => {
 
     const [tierData, setTierData, handleTierChange] = useForm('');
     const [percentageData, setPercentageData, handlePercentageChange] = useForm('');
@@ -53,8 +53,6 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
 
         setTiers(updatedTiers);
     }
-
-    const totalPercentage = tiers.reduce((total, item) => total + parseInt(item.percent), 0)
     
     return (
         <div className={styles.ratesMainContext}>
