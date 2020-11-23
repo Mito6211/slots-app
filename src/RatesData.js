@@ -24,6 +24,10 @@ const RatesData = ({ data: { tiers, selectedTier } }) => {
         }
     }, [tiers, selectedTier])
 
+    useEffect(() => {
+        console.log(items)
+    }, [items])
+
     return (
         <div className={styles.rightContainer}>
             <div className={styles.rightData}>

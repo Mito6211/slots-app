@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, Switch, Route, useLocation } from 'react-router-dom'
 
 import Spin from "./Spin"
@@ -14,6 +14,7 @@ export default function App() {
 
 
     const [tiers, setTiers] = useState(
+        JSON.parse(localStorage.getItem("tiers")) ||
         [
             {
                 tier: "Smaller Prizes",
@@ -49,6 +50,12 @@ export default function App() {
 
 
     const totalPercentage = tiers.reduce((total, item) => total + parseInt(item.percent), 0)
+
+
+    useEffect(() => {
+        localStorage.setItem("tiers", JSON.stringify(tiers));
+    }, [tiers])
+
 
     return (
         <div>
