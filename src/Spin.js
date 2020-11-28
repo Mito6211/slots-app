@@ -11,14 +11,17 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
 
     const pickItem = () => {
         setIsSpinning(true);
-
+        
         const allTiers = [];
         tiers.forEach((tier) => {
             for (let i = 0; i < parseInt(tier.percent); i++) {
                 allTiers.push(tier);
             }
         });
-
+        
+        const randomTier =
+            allTiers[Math.floor(Math.random() * allTiers.length)];
+        
         setThingSpinning("rarity");
 
         for (let i = 1; i <= 10; i++) {
@@ -33,14 +36,12 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
             timer(i);
 
             setTimeout(() => {
+                setRarity(randomTier);
                 setThingSpinning(null);
-            }, 2000);
+            }, 2005);
         }
 
-        const randomTier =
-            allTiers[Math.floor(Math.random() * allTiers.length)];
 
-        setRarity(randomTier);
 
         setTimeout(() => {
             setThingSpinning("item");
