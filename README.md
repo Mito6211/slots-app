@@ -8,10 +8,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-react-start\
-react-build\
-react-test\
-react-eject\
-electron-build\
-build\
-start
+yarn react-start\
+yarn react-build\
+yarn react-test\
+yarn react-eject\
+yarn electron-build\
+yarn build\
+yarn start

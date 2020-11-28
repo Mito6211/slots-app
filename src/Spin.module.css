@@ -44,3 +44,20 @@
     text-align: center;
     height: 75px;
 }
+
+
+
+
+
+.spinner {
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateY(-25%);
+    animation: spinText 0.2s infinite linear;
+}
+
+@keyframes spinText {
+    to {
+        transform: translateY(25%);
+    }
+}

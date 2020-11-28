@@ -14,8 +14,7 @@ export default function App() {
 
 
     const [tiers, setTiers] = useState(
-        JSON.parse(localStorage.getItem("tiers")) ||
-        [
+        JSON.parse(localStorage.getItem("tiers")) || [
             {
                 tier: "Smaller Prizes",
                 percent: "80",

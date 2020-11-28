@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './RatesData.module.css';
 import useForm from './hooks/useForm';
 
-const RatesData = ({ data: { tiers, selectedTier } }) => {
+const RatesData = ({ data: { tiers, selectedTier, setTiers } }) => {
     const [items, setItems] = useState([]);
     const [itemData, setItemData, handleItemChange] = useForm('');
 
@@ -22,11 +22,21 @@ const RatesData = ({ data: { tiers, selectedTier } }) => {
         if (tierItem !== undefined) {
             setItems(tierItem.items)
         }
+        console.log(1)
     }, [tiers, selectedTier])
 
-    useEffect(() => {
-        console.log(items)
-    }, [items])
+    // useEffect(() => {
+
+    //     const updatedTiers = [...tiers]
+    //     updatedTiers[selectedTier] = {
+    //         ...updatedTiers[selectedTier],
+    //         items
+    //     }
+    //     setTiers(updatedTiers);
+    //     localStorage.setItem("tiers", JSON.stringify(updatedTiers))
+    //     console.log(JSON.parse(localStorage.getItem("tiers")))
+    //     console.log(2)
+    // }, [items, selectedTier, setTiers, tiers])
 
     return (
         <div className={styles.rightContainer}>

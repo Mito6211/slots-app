@@ -19,7 +19,7 @@ const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
     return (
         <div className={styles.container}>
             <RatesTiers data={{ tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage }} />
-            <RatesData data={{ tiers, selectedTier }} />
+            <RatesData data={{ tiers, selectedTier, setTiers }} />
         </div>
     )
 }
