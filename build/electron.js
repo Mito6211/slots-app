@@ -5,13 +5,16 @@ const isDev = require("electron-is-dev")
 function createWindow() {
     const win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        icon: __dirname + '/icon.png'
     })
 
     win.loadURL(
         isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`
     )
 }
+
+console.log(__dirname)
 
 app.whenReady().then(createWindow)
 
