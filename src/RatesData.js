@@ -1,48 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import styles from './RatesData.module.css';
-import useForm from './hooks/useForm';
+import React, { useEffect } from "react";
+import styles from "./RatesData.module.css";
 
-const RatesData = ({ data: { tiers, selectedTier, setTiers } }) => {
-    const [items, setItems] = useState([]);
-    const [itemData, setItemData, handleItemChange] = useForm('');
-
-    const itemAdd = (e) => {
-        if (itemData.length > 0) {
-            setItems(prevItems => ([
-                ...prevItems,
-                itemData
-            ]));
-        }
-        setItemData('');
-        e.preventDefault();
-    }
+const RatesData = ({
+    data: {
+        tiers,
+        setTiers,
+        selectedTier,
+        itemData,
+        setItemData,
+        handleItemChange,
+        items,
+        setItems,
+        itemAdd,
+    },
+}) => {
+    console.log(items);
+    console.log(JSON.parse(localStorage.getItem("tiers")));
 
     useEffect(() => {
         const tierItem = tiers[selectedTier];
         if (tierItem !== undefined) {
-            setItems(tierItem.items)
+            setItems(tierItem.items);
         }
-        console.log(1)
-    }, [tiers, selectedTier])
-
-    // useEffect(() => {
-
-    //     const updatedTiers = [...tiers]
-    //     updatedTiers[selectedTier] = {
-    //         ...updatedTiers[selectedTier],
-    //         items
-    //     }
-    //     setTiers(updatedTiers);
-    //     localStorage.setItem("tiers", JSON.stringify(updatedTiers))
-    //     console.log(JSON.parse(localStorage.getItem("tiers")))
-    //     console.log(2)
-    // }, [items, selectedTier, setTiers, tiers])
+        console.log(1);
+    }, [tiers, selectedTier, setItems]);
 
     return (
         <div className={styles.rightContainer}>
             <div className={styles.rightData}>
                 <ul className={styles.items}>
-                    {items.map((item, index) => <li key={index}>{item}</li>)}
+                    {items.map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
                 </ul>
             </div>
             <div className={styles.rightInputs}>
@@ -58,7 +47,7 @@ const RatesData = ({ data: { tiers, selectedTier, setTiers } }) => {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default RatesData;
