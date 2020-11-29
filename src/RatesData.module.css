@@ -40,6 +40,12 @@
     width: 100%;
 }
 
+.removeIcon {
+    color: red;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
 @media screen and (max-width: 697px) {
     .rightContainer {
         margin-top: 100px;

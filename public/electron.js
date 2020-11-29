@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const path = require("path")
+// const path = require("path")
 const isDev = require("electron-is-dev")
 
 function createWindow() {
@@ -10,11 +10,9 @@ function createWindow() {
     })
 
     win.loadURL(
-        isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`
+        isDev ? "http://localhost:3000" : `https://slots-example.netlify.app/`
     )
 }
-
-console.log(__dirname)
 
 app.whenReady().then(createWindow)
 

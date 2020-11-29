@@ -14,23 +14,40 @@ const RatesData = ({
         itemAdd,
     },
 }) => {
-    console.log(items);
-    console.log(JSON.parse(localStorage.getItem("tiers")));
 
     useEffect(() => {
         const tierItem = tiers[selectedTier];
         if (tierItem !== undefined) {
             setItems(tierItem.items);
         }
-        console.log(1);
     }, [tiers, selectedTier, setItems]);
+
+    const removeDataItem = (index) => {
+        const newItems = items.filter((item) => items[index] !== item)
+        setItems(newItems);
+        let updatedTiers = [...tiers];
+        updatedTiers[selectedTier] = {
+            ...updatedTiers[selectedTier],
+            items: newItems,
+        };
+        setTiers(updatedTiers)
+        // localStorage.setItem("tiers", JSON.stringify(updatedTiers));
+    };
 
     return (
         <div className={styles.rightContainer}>
             <div className={styles.rightData}>
                 <ul className={styles.items}>
                     {items.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index} style={{ display: "flex" }}>
+                            <span
+                                className={styles.removeIcon}
+                                onClick={() => removeDataItem(index)}
+                            >
+                                (X)
+                            </span>
+                            {item}
+                        </li>
                     ))}
                 </ul>
             </div>
