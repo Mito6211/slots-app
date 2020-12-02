@@ -60,3 +60,14 @@
 .percentageUpdateInput {
     max-width: 50px;
 }
+
+.upperData {
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeAll {
+    color: red;
+    cursor: pointer;
+    padding: 10px;
+}

@@ -49,6 +49,7 @@ const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
                     selectTier,
                     removeTier,
                     totalPercentage,
+                    setItems
                 }}
             />
             <RatesData

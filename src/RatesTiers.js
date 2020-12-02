@@ -3,7 +3,7 @@ import React from 'react'
 import useForm from './hooks/useForm'
 import styles from "./RatesTiers.module.css"
 
-const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage } }) => {
+const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage, setItems } }) => {
 
     const [tierData, setTierData, handleTierChange] = useForm('');
     const [percentageData, setPercentageData, handlePercentageChange] = useForm('');
@@ -53,12 +53,23 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
 
         setTiers(updatedTiers);
     }
-    
+
+    const removeAll = () => {
+        setTiers([]);
+        setItems([]);
+    }
+
     return (
         <div className={styles.ratesMainContext}>
-            <div style={{ color: totalPercentage === 100 ? "green" : "red", padding: "10px"}}>
-                Total: {!isNaN(totalPercentage) ? totalPercentage : 0}%
+            <div className={styles.upperData}>
+                <div style={{ color: totalPercentage === 100 ? "green" : "red", padding: "10px" }}>
+                    Total: {!isNaN(totalPercentage) ? totalPercentage : 0}%
+                </div>
+                <div className={styles.removeAll}>
+                    <span onClick={removeAll}>(Remove All)</span>
+                </div>
             </div>
+
             <div className={styles.mainContent}>
 
                 {tiers.map((tierData, index) => (
