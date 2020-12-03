@@ -37,7 +37,7 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
             <RatesTiersTop data={{ styles, setTiers, totalPercentage, setItems }} />
 
             <div className={styles.mainContent}>
-                <RatesTiersCards data={{ styles, setTiers, tiers, selectTier, selectedTier, removeTier }} />
+                <RatesTiersCards data={{ styles, setTiers, tiers, selectTier, selectedTier, removeTier, numRegex }} />
                 <RatesTiersForm data={{ styles, setTiers, state, setState, handleChange, numRegex }} />
             </div>
 

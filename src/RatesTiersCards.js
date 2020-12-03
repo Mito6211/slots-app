@@ -1,17 +1,19 @@
 import React from 'react';
 
-function RatesTiersCards({ data: { tiers, styles, selectTier, selectedTier, removeTier, setTiers } }) {
+function RatesTiersCards({ data: { tiers, styles, selectTier, selectedTier, removeTier, setTiers, numRegex } }) {
 
     const handlePercentageUpdate = ({ value }, index) => {
-        const updatedTiers = [...tiers];
-        let percentageValue = value;
-
-        updatedTiers[index] = {
-            ...updatedTiers[index],
-            percent: percentageValue.replace(',', '.')
+        if (numRegex.test(value)) {
+            const updatedTiers = [...tiers];
+            let percentageValue = value;
+    
+            updatedTiers[index] = {
+                ...updatedTiers[index],
+                percent: percentageValue.replace(',', '.')
+            }
+    
+            setTiers(updatedTiers);
         }
-
-        setTiers(updatedTiers);
     }
 
     const changePercentage = (index) => {
