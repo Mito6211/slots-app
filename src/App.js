@@ -17,7 +17,7 @@ export default function App() {
         JSON.parse(localStorage.getItem("tiers")) || [
             {
                 tier: "Smaller Prizes",
-                percent: "80",
+                percent: "60",
                 perSelected: false,
                 items: [
                     "1 month of Discord Nitro Classic",
@@ -27,7 +27,7 @@ export default function App() {
                 ]
             }, {
                 tier: "Rare",
-                percent: "15",
+                percent: "24.6",
                 perSelected: false,
                 items: [
                     "3 months of Spotify Premium",
@@ -36,7 +36,7 @@ export default function App() {
                 ]
             }, {
                 tier: "Gift Cards",
-                percent: "5",
+                percent: "15.4",
                 perSelected: false,
                 items: [
                     "$50 Amazon Card",
@@ -48,7 +48,9 @@ export default function App() {
         ]);
 
 
-    const totalPercentage = tiers.reduce((total, item) => total + parseInt(item.percent), 0)
+    const tPFloat = tiers.reduce((total, item) => total + parseFloat(item.percent.replace(',', '.')), 0);
+    const totalPercentage = tPFloat.toFixed(tPFloat === parseInt(tPFloat) ? 0 : 2);
+    console.log(totalPercentage);
 
 
     useEffect(() => {

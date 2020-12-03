@@ -96,7 +96,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 <button
                     className={styles.spinBtn}
                     onClick={pickItem}
-                    disabled={totalPercentage !== 100 || isSpinning}
+                    disabled={totalPercentage !== "100" || isSpinning}
                 >
                     <span className="animate__animated animate__zoomIn">
                         SPIN!
@@ -104,7 +104,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 </button>
                 <div
                     className={styles.outcome}
-                    style={{ color: totalPercentage === 100 ? "green" : "red" }}
+                    style={{ color: totalPercentage === "100" ? "green" : "red" }}
                 >
                     <span className="animate__animated animate__zoomIn">
                         The outcome is at {totalPercentage}%!
