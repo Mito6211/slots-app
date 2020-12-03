@@ -8,7 +8,7 @@ import RatesTiersForm from "./RatesTiersForm"
 
 const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage, setItems } }) => {
 
-    const numRegex = RegExp("^[0-9]?(,|\\.)?[0-9]*$");
+    const numRegex = RegExp("^[0-9]*(,|\\.)?[0-9]*$");
 
     const [state, setState] = useState({
         tierData: "",
