@@ -11,7 +11,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
 
     const pickItem = () => {
         setIsSpinning(true);
-        
+
         const allTiers = [];
         tiers.forEach((tier) => {
             // tenth of a percent accuracy (eg. 32.6% will have 326 out of 1000 entries in the array)
@@ -19,56 +19,46 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 allTiers.push(tier);
             }
         });
-        
+
         const randomTier =
             allTiers[Math.floor(Math.random() * allTiers.length)];
-        
+
         setThingSpinning("rarity");
 
-        for (let i = 1; i <= 10; i++) {
-            const timer = (n) => {
-                setTimeout(() => {
-                    setRarity(
-                        allTiers[Math.floor(Math.random() * allTiers.length)]
-                    );
-                }, 200 * n);
-            };
-
-            timer(i);
-
-            setTimeout(() => {
+        let raritySpinnerCount = 0;
+        const raritySpinnerID = setInterval(() => {
+            if (raritySpinnerCount >= 9) {
                 setRarity(randomTier);
                 setThingSpinning(null);
-            }, 2005);
-        }
-
-
+                clearInterval(raritySpinnerID);
+            } else {
+                setRarity(
+                    allTiers[Math.floor(Math.random() * allTiers.length)]
+                );
+                raritySpinnerCount++;
+            }
+        }, 200);
 
         setTimeout(() => {
             setThingSpinning("item");
-
-            for (let i = 1; i <= 10; i++) {
-                const timer = (n) => {
-                    setTimeout(() => {
-                        setItem(
-                            randomTier.items[
-                                Math.floor(
-                                    Math.random() * randomTier.items.length
-                                )
-                            ]
-                        );
-                    }, 200 * n);
-                };
-
-                timer(i);
-
-                setTimeout(() => {
+    
+            let itemSpinnerCount = 0;
+            const itemSpinnerID = setInterval(() => {
+                if (itemSpinnerCount >= 9) {
                     setThingSpinning(null);
                     setIsSpinning(false);
-                }, 2000);
-            }
+                    clearInterval(itemSpinnerID);
+                } else {
+                    setItem(
+                        randomTier.items[
+                            Math.floor(Math.random() * randomTier.items.length)
+                        ]
+                    );
+                    itemSpinnerCount++;
+                }
+            }, 200);
+        }, 2000)
 
-        }, 2100);
     };
 
     return (
@@ -105,7 +95,9 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 </button>
                 <div
                     className={styles.outcome}
-                    style={{ color: totalPercentage === "100" ? "green" : "red" }}
+                    style={{
+                        color: totalPercentage === "100" ? "green" : "red",
+                    }}
                 >
                     <span className="animate__animated animate__zoomIn">
                         The outcome is at {totalPercentage}%!
