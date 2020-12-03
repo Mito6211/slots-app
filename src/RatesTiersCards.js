@@ -4,16 +4,11 @@ function RatesTiersCards({ data: { tiers, styles, selectTier, selectedTier, remo
 
     const handlePercentageUpdate = ({ value }, index) => {
         const updatedTiers = [...tiers];
-        const keystroke = value[value.length - 1];
-        let percentValue = (isNaN(parseInt(value)) && keystroke !== '.') ? "" : value;
-
-        if (keystroke === '.' && parseInt(tiers[index].percent) % 1 !== 0) {
-            percentValue = value;
-        }
+        let percentageValue = value;
 
         updatedTiers[index] = {
             ...updatedTiers[index],
-            percent: percentValue
+            percent: percentageValue.replace(',', '.')
         }
 
         setTiers(updatedTiers);

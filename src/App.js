@@ -46,17 +46,22 @@ export default function App() {
                 ]
             }
         ]);
-
-
+        
     const tPFloat = tiers.reduce((total, item) => total + parseFloat(item.percent.replace(',', '.')), 0);
     const totalPercentage = tPFloat.toFixed(tPFloat === parseInt(tPFloat) ? 0 : 2);
-    console.log(totalPercentage);
 
 
     useEffect(() => {
-        localStorage.setItem("tiers", JSON.stringify(tiers));
+        const newTiers = tiers.map(tier => {
+            const newTier = {
+                ...tier,
+                percent: tier.percent.replace(',', '.')
+            }
+            return newTier;
+        });
+        localStorage.setItem("tiers", JSON.stringify(newTiers));
     }, [tiers])
-
+    
 
     return (
         <div>

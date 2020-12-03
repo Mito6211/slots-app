@@ -15,7 +15,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
         const allTiers = [];
         tiers.forEach((tier) => {
             // tenth of a percent accuracy (eg. 32.6% will have 326 out of 1000 entries in the array)
-            for (let i = 0; i < parseInt(tier.percent * 10); i++) {
+            for (let i = 0; i < parseInt(tier.percent.replace(',', '.') * 10); i++) {
                 allTiers.push(tier);
             }
         });
@@ -41,7 +41,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
 
         setTimeout(() => {
             setThingSpinning("item");
-    
+
             let itemSpinnerCount = 0;
             const itemSpinnerID = setInterval(() => {
                 if (itemSpinnerCount >= 9) {
@@ -51,7 +51,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 } else {
                     setItem(
                         randomTier.items[
-                            Math.floor(Math.random() * randomTier.items.length)
+                        Math.floor(Math.random() * randomTier.items.length)
                         ]
                     );
                     itemSpinnerCount++;
@@ -87,7 +87,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 <button
                     className={styles.spinBtn}
                     onClick={pickItem}
-                    disabled={totalPercentage !== "100" || isSpinning}
+                    disabled={(totalPercentage !== "100" && totalPercentage !== "100.00") || isSpinning}
                 >
                     <span className="animate__animated animate__zoomIn">
                         SPIN!
@@ -96,7 +96,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
                 <div
                     className={styles.outcome}
                     style={{
-                        color: totalPercentage === "100" ? "green" : "red",
+                        color: (totalPercentage === "100" || totalPercentage === "100.00") ? "green" : "red",
                     }}
                 >
                     <span className="animate__animated animate__zoomIn">

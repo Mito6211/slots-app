@@ -25,7 +25,6 @@ const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
         };
         setTiers(updatedTiers);
         localStorage.setItem("tiers", JSON.stringify(updatedTiers));
-        // console.log(JSON.parse(localStorage.getItem("tiers")))
 
         e.preventDefault();
     };

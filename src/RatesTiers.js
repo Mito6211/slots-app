@@ -29,7 +29,6 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
                 [name]: value
             }))
         }
-        console.log(state)
     }
 
     return (

@@ -12,7 +12,7 @@ function RatesTiersForm( {data: { styles, state, setState, handleChange, setTier
                 ...prevTiers,
                 {
                     tier: state.tierData,
-                    percent: state.percentageData.replace("%", ""),
+                    percent: state.percentageData.replace("%", "").replace(',', '.'),
                     perSelected: false,
                     items: [],
                 },

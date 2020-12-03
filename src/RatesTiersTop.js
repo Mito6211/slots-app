@@ -14,7 +14,7 @@ function RatesTiersTop({ data: { styles, totalPercentage, setTiers, setItems } }
 
     return (
         <div className={styles.upperData}>
-            <div style={{ color: totalPercentage === "100" ? "green" : "red", padding: "10px" }}>
+            <div style={{ color: (totalPercentage === "100" || totalPercentage === "100.00") ? "green" : "red", padding: "10px" }}>
                 Total: {!isNaN(totalPercentage) ? totalPercentage : 0}%
             </div>
             <div className={styles.reset}>
