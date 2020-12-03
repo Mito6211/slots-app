@@ -14,7 +14,8 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
         
         const allTiers = [];
         tiers.forEach((tier) => {
-            for (let i = 0; i < parseInt(tier.percent); i++) {
+            // tenth of a percent accuracy (eg. 32.6% will have 326 out of 1000 entries in the array)
+            for (let i = 0; i < parseInt(tier.percent * 10); i++) {
                 allTiers.push(tier);
             }
         });
