@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Switch, Route, useLocation } from 'react-router-dom'
+import { MainContext } from "./MainContext"
+
 
 import Spin from "./Spin"
 import Rates from "./Rates"
@@ -10,8 +12,6 @@ export default function App() {
 
     const location = useLocation();
     const currentPath = location.pathname;
-
-
 
     const [tiers, setTiers] = useState(
         JSON.parse(localStorage.getItem("tiers")) || [
@@ -46,7 +46,7 @@ export default function App() {
                 ]
             }
         ]);
-        
+
     const tPFloat = tiers.reduce((total, item) => total + parseFloat(item.percent.replace(',', '.')), 0);
     const totalPercentage = tPFloat.toFixed(tPFloat === parseInt(tPFloat) ? 0 : 2);
 
@@ -61,7 +61,7 @@ export default function App() {
         });
         localStorage.setItem("tiers", JSON.stringify(newTiers));
     }, [tiers])
-    
+
 
     return (
         <div>
@@ -85,12 +85,14 @@ export default function App() {
             </div>
 
             <Switch>
-                <Route exact path="/">
-                    <Spin data={{ totalPercentage, tiers }} />
-                </Route>
-                <Route exact path="/rates">
-                    <Rates data={{ totalPercentage, tiers, setTiers }} />
-                </Route>
+                <MainContext.Provider value={tiers}>
+                    <Route exact path="/">
+                        <Spin data={{ totalPercentage }} />
+                    </Route>
+                    <Route exact path="/rates">
+                        <Rates data={{ totalPercentage, setTiers }} />
+                    </Route>
+                </MainContext.Provider>
             </Switch>
         </div>
     )

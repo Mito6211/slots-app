@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./Rates.module.css";
 
 import RatesData from "./RatesData";
@@ -6,11 +6,15 @@ import RatesTiers from "./RatesTiers";
 
 import useForm from "./hooks/useForm";
 
-const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
+import { MainContext } from "./MainContext";
+
+const Rates = ({ data: { totalPercentage, setTiers } }) => {
     const [selectedTier, setSelectedTier] = useState(0);
 
     const [itemData, setItemData, handleItemChange] = useForm("");
     const [items, setItems] = useState([]);
+
+    const tiers = useContext(MainContext);
 
     const itemAdd = (e) => {
         if (itemData.length > 0) {
@@ -42,7 +46,6 @@ const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
         <div className={styles.container}>
             <RatesTiers
                 data={{
-                    tiers,
                     setTiers,
                     selectedTier,
                     selectTier,
@@ -53,7 +56,6 @@ const Rates = ({ data: { totalPercentage, tiers, setTiers } }) => {
             />
             <RatesData
                 data={{
-                    tiers,
                     setTiers,
                     selectedTier,
                     itemData,

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MainContext } from "./MainContext";
 
-function RatesTiersCards({ data: { tiers, styles, selectTier, selectedTier, removeTier, setTiers, numRegex } }) {
+function RatesTiersCards({ data: { styles, selectTier, selectedTier, removeTier, setTiers, numRegex } }) {
+
+    const tiers = useContext(MainContext);
 
     const handlePercentageUpdate = ({ value }, index) => {
         if (numRegex.test(value)) {

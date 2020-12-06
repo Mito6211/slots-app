@@ -6,7 +6,7 @@ import RatesTiersTop from "./RatesTiersTop"
 import RatesTiersCards from "./RatesTiersCards"
 import RatesTiersForm from "./RatesTiersForm"
 
-const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeTier, totalPercentage, setItems } }) => {
+const RatesTiers = ({ data: { setTiers, selectedTier, selectTier, removeTier, totalPercentage, setItems } }) => {
 
     const numRegex = RegExp("^[0-9]*(,|\\.)?[0-9]*$");
 
@@ -14,7 +14,6 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
         tierData: "",
         percentageData: ""
     });
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,7 +36,7 @@ const RatesTiers = ({ data: { tiers, setTiers, selectedTier, selectTier, removeT
             <RatesTiersTop data={{ styles, setTiers, totalPercentage, setItems }} />
 
             <div className={styles.mainContent}>
-                <RatesTiersCards data={{ styles, setTiers, tiers, selectTier, selectedTier, removeTier, numRegex }} />
+                <RatesTiersCards data={{ styles, setTiers, selectTier, selectedTier, removeTier, numRegex }} />
                 <RatesTiersForm data={{ styles, setTiers, state, setState, handleChange, numRegex }} />
             </div>
 

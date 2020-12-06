@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "animate.css";
 import styles from "./Spin.module.css";
 
-const Spin = ({ data: { totalPercentage, tiers } }) => {
+import { MainContext } from "./MainContext";
+
+const Spin = ({ data: { totalPercentage } }) => {
     const [rarity, setRarity] = useState({ tier: "RARITY" });
     const [item, setItem] = useState("ITEM");
-
+    
     const [thingSpinning, setThingSpinning] = useState(null);
     const [isSpinning, setIsSpinning] = useState(false);
+    
+    const tiers = useContext(MainContext);
 
     const pickItem = () => {
         setIsSpinning(true);
@@ -60,6 +64,7 @@ const Spin = ({ data: { totalPercentage, tiers } }) => {
         }, 2000)
 
     };
+
 
     return (
         <>

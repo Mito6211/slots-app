@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styles from "./RatesData.module.css";
+
+import { MainContext } from "./MainContext";
 
 const RatesData = ({
     data: {
-        tiers,
         setTiers,
         selectedTier,
         itemData,
@@ -14,6 +15,8 @@ const RatesData = ({
         itemAdd,
     },
 }) => {
+
+    const tiers = useContext(MainContext);
 
     useEffect(() => {
         const tierItem = tiers[selectedTier];
