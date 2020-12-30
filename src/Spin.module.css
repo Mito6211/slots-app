@@ -1,6 +1,12 @@
+.spinMainContext, .otherData {
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+}
+
 .spinMainContext {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -10,7 +16,7 @@
     max-width: 400px;
     height: 200px;
     border: 10px solid gray;
-    border-radius: 10px;
+    border-radius: 50px;
     margin-bottom: 30px;
 }
 
@@ -29,14 +35,16 @@
 
 .spinBtn {
     font-size: 30px;
-    /* flex: 1; */
     height: 75px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .outcome {
     font-size: 22px;
     border: 5px solid gray;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -56,4 +64,20 @@
     to {
         transform: translateY(25%);
     }
+}
+
+@media (max-width: 600px) {
+    .spinMainContext {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dataBox {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+
 }
